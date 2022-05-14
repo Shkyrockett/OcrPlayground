@@ -1,0 +1,90 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Version>0.0.0.1</Version>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows10.0.17763.0</TargetFramework>
+		<Platforms>AnyCPU;x64;x86;ARM32;ARM64</Platforms>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>Preview</LangVersion>
+		<AnalysisLevel>preview</AnalysisLevel>
+		<UseWindowsForms>true</UseWindowsForms>
+		<UseWPF>True</UseWPF>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<EnablePreviewFeatures>true</EnablePreviewFeatures>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<Authors>Shkyrockett</Authors>
+		<Copyright>Copyright (c) 2022 $(Authors)</Copyright>
+		<Description>Playground for experimenting with Built in Windows OCR.</Description>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/Shkyrockett/OcrPlayground</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/Shkyrockett/OcrPlayground</PackageProjectUrl>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+		<DocumentationFile>$(OutputPath)$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+		<StartupObject>OCRPlayground.Program</StartupObject>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<DebugType>None</DebugType>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)'=='AnyCPU'">
+		<PlatformTarget>AnyCPU</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)'=='x64'">
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)'=='x86'">
+		<PlatformTarget>x86</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)'=='ARM64'">
+		<PlatformTarget>ARM64</PlatformTarget>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Platform)'=='ARM32'">
+		<PlatformTarget>ARM32</PlatformTarget>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\LICENSE.md" Link="Properties\LICENSE.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md" Link="Properties\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <Compile Update="Properties\Settings.Designer.cs">
+	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Settings.settings</DependentUpon>
+	  </Compile>
+	  <None Update="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  </None>
+	</ItemGroup>
+
+</Project>
