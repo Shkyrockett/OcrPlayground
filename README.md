@@ -1,3 +1,3 @@
 # OcrPlayground
 
-Playground for experimenting with Built in Windows OCR.
+Playground for experimenting with the` built in Windows OCR UWP API in Windows Forms.
