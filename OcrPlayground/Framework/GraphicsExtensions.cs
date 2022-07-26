@@ -36,60 +36,30 @@ namespace OCRPlayground
             if (fromUnit == toUnit) return value;
 
             // Convert to pixels. 
-            switch (fromUnit)
+            value *= fromUnit switch
             {
-                case GraphicsUnit.World:
-                    value *= graphics.DpiY / graphics.PageScale;
-                    break;
-                case GraphicsUnit.Display:
-                    value *= graphics.DpiY / (graphics.DpiY < 100f ? 72f : 100f);
-                    break;
-                case GraphicsUnit.Pixel:
-                    // Do nothing.
-                    break;
-                case GraphicsUnit.Point:
-                    value *= graphics.DpiY / 72f;
-                    break;
-                case GraphicsUnit.Inch:
-                    value *= graphics.DpiY;
-                    break;
-                case GraphicsUnit.Document:
-                    value *= graphics.DpiY / 300f;
-                    break;
-                case GraphicsUnit.Millimeter:
-                    value *= graphics.DpiY / 25.4F;
-                    break;
-                default:
-                    throw new Exception($"Unknown input unit {fromUnit} in FontInfo.ConvertUnits");
-            }
+                GraphicsUnit.World => graphics.DpiY / graphics.PageScale,
+                GraphicsUnit.Display => graphics.DpiY / (graphics.DpiY < 100f ? 72f : 100f),
+                GraphicsUnit.Pixel => 1f,
+                GraphicsUnit.Point => graphics.DpiY / 72f,
+                GraphicsUnit.Inch => graphics.DpiY,
+                GraphicsUnit.Document => graphics.DpiY / 300f,
+                GraphicsUnit.Millimeter => graphics.DpiY / 25.4F,
+                _ => throw new Exception($"Unknown input unit {fromUnit} in {nameof(ConvertGraphicsUnits)}"),
+            };
 
-            // Convert from pixels to the new units. 
-            switch (toUnit)
+            // Convert from pixels to the new units.
+            value /= (float)(toUnit switch
             {
-                case GraphicsUnit.World:
-                    value /= graphics.DpiY / graphics.PageScale;
-                    break;
-                case GraphicsUnit.Display:
-                    value /= graphics.DpiY / (graphics.DpiY < 100f ? 72f : 100f);
-                    break;
-                case GraphicsUnit.Pixel:
-                    // Do nothing.
-                    break;
-                case GraphicsUnit.Point:
-                    value /= graphics.DpiY / 72f;
-                    break;
-                case GraphicsUnit.Inch:
-                    value /= graphics.DpiY;
-                    break;
-                case GraphicsUnit.Document:
-                    value /= graphics.DpiY / 300f;
-                    break;
-                case GraphicsUnit.Millimeter:
-                    value /= graphics.DpiY / 25.4F;
-                    break;
-                default:
-                    throw new Exception($"Unknown output unit {toUnit} in FontInfo.ConvertUnits");
-            }
+                GraphicsUnit.World => graphics.DpiY / graphics.PageScale,
+                GraphicsUnit.Display => graphics.DpiY / (graphics.DpiY < 100f ? 72f : 100f),
+                GraphicsUnit.Pixel => 1f,
+                GraphicsUnit.Point => graphics.DpiY / 72f,
+                GraphicsUnit.Inch => graphics.DpiY,
+                GraphicsUnit.Document => graphics.DpiY / 300f,
+                GraphicsUnit.Millimeter => graphics.DpiY / 25.4F,
+                _ => throw new Exception($"Unknown input unit {fromUnit} in {nameof(ConvertGraphicsUnits)}"),
+            });
 
             return value;
         }
