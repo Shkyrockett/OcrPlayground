@@ -29,26 +29,26 @@ namespace OCRPlayground
         /// <summary>
         /// Initializes a new instance of the <see cref="Metadata" /> class.
         /// </summary>
-        /// <param name="people">The people.</param>
+        /// <param name="text">The text.</param>
         public Metadata(List<Text> text)
         {
             TextEnteries = text;
         }
 
         /// <summary>
-        /// Gets or sets the people.
+        /// Gets or sets the TextEnteries.
         /// </summary>
         /// <value>
-        /// The people.
+        /// The TextEnteries.
         /// </value>
         [PropertyGridInitialExpanded(true)]
         [TypeConverter(typeof(ExpandableCollectionConverter))]
         public List<Text> TextEnteries { get; set; }
 
         /// <summary>
-        /// Adds the specified person.
+        /// Adds the specified TextEnteries.
         /// </summary>
-        /// <param name="text">The person.</param>
+        /// <param name="text">The TextEnteries.</param>
         public void Add(Text text) => TextEnteries.Add(text);
     }
 }

@@ -9,8 +9,8 @@
 // <remarks>
 // </remarks>
 
-using System.ComponentModel.Design.Serialization;
 using System.ComponentModel;
+using System.ComponentModel.Design.Serialization;
 using System.Globalization;
 
 namespace OCRPlayground

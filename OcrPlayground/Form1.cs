@@ -24,6 +24,9 @@ namespace OCRPlayground
     public partial class ViewerForm
         : Form
     {
+        /// <summary>
+        /// The language.
+        /// </summary>
         private readonly Language language = new("en");
 
         /// <summary>
@@ -141,6 +144,7 @@ namespace OCRPlayground
         /// OCRs the document.
         /// </summary>
         /// <param name="stream">The file stream.</param>
+        /// <param name="language">The language to OCR in.</param>
         /// <returns>A Task.</returns>
         private static async Task<OcrResult> OcrDocument(FileStream stream, Language language)
         {

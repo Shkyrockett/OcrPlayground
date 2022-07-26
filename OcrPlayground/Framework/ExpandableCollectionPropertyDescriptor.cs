@@ -29,7 +29,7 @@ namespace OCRPlayground
         /// <summary>
         /// The collection.
         /// </summary>
-        private readonly IList? collection;
+        private IList? collection;
 
         /// <summary>
         /// The index (readonly). Value: -1.
@@ -77,12 +77,12 @@ namespace OCRPlayground
         /// <summary>
         /// Gets the component type.
         /// </summary>
-        public override Type? ComponentType => collection?.GetType();
+        public override Type ComponentType => collection?.GetType() ?? default!;
 
         /// <summary>
         /// Gets the property type.
         /// </summary>
-        public override Type? PropertyType => collection[index]?.GetType();
+        public override Type PropertyType => collection?[index]?.GetType() ?? default!;
 
         ///// <summary>
         ///// 
@@ -125,7 +125,11 @@ namespace OCRPlayground
         /// </summary>
         /// <param name="component">The component.</param>
         /// <param name="value">The value.</param>
-        public override void SetValue(object? component, object? value) => collection[index] = value;
+        public override void SetValue(object? component, object? value)
+        {
+            collection ??= new List<object>();
+            collection[index] = value;
+        }
 
         /// <summary>
         /// The should serialize value.

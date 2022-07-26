@@ -28,7 +28,7 @@ namespace OCRPlayground
         /// <summary>
         /// The dictionary.
         /// </summary>
-        private readonly IDictionary? dictionary;
+        private IDictionary? dictionary;
 
         /// <summary>
         /// The key.
@@ -76,12 +76,12 @@ namespace OCRPlayground
         /// <summary>
         /// Gets the component type.
         /// </summary>
-        public override Type? ComponentType => dictionary?.GetType();
+        public override Type ComponentType => dictionary?.GetType() ?? default!;
 
         /// <summary>
         /// Gets the property type.
         /// </summary>
-        public override Type? PropertyType => dictionary?[key]?.GetType();
+        public override Type PropertyType => dictionary?[key!]?.GetType() ?? default!;
 
         /// <summary>
         /// Gets the attributes.
@@ -115,14 +115,18 @@ namespace OCRPlayground
         /// <returns>
         /// The <see cref="object" />.
         /// </returns>
-        public override object? GetValue(object? component) => dictionary?[key];
+        public override object? GetValue(object? component) => dictionary?[key!];
 
         /// <summary>
         /// Set the value.
         /// </summary>
         /// <param name="component">The component.</param>
         /// <param name="value">The value.</param>
-        public override void SetValue(object? component, object? value) => dictionary[key] = value;
+        public override void SetValue(object? component, object? value)
+        {
+            dictionary ??= new Dictionary<object, object>();
+            dictionary[key!] = value;
+        }
 
         /// <summary>
         /// The should serialize value.
