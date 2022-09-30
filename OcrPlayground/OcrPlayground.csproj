@@ -4,7 +4,7 @@
 		<Version>0.0.0.1</Version>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net7.0-windows10.0.17763.0</TargetFramework>
-		<Platforms>AnyCPU;x64;x86;ARM32;ARM64</Platforms>
+		<Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>Preview</LangVersion>
@@ -18,7 +18,7 @@
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<Authors>Shkyrockett</Authors>
 		<Copyright>Copyright (c) 2022 $(Authors)</Copyright>
-		<Description>Playground for experimenting with the` built in Windows OCR UWP API in Windows Forms.</Description>
+		<Description>Playground for experimenting with the built in Windows OCR UWP API from Windows Forms.</Description>
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/Shkyrockett/OcrPlayground</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/Shkyrockett/OcrPlayground</PackageProjectUrl>
